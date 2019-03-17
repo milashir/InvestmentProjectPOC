@@ -1,0 +1,27 @@
+<h1>New Projects</h1>
+<p *ngIf="!projectList"><em>Loading...</em></p>
+<table class='table' *ngIf="projectList">
+  <thead>
+    <tr>
+      <th>ProjectName</th>
+      <th>Location</th>
+      <th>Lending Target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let project of projectList">
+      <td>{{ project.name }}</td>
+      <td>{{ project.location }}</td>
+      <td>$ {{ project.price }}</td>
+      <td *ngIf="project.status==1">
+        <a [routerLink]="['/investment/add/', project.id]">Invest</a>
+      </td>
+      <td *ngIf="project.status==2">
+        Funding Completed
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
